@@ -2,7 +2,7 @@
 
 A Wear OS watch face built with the [Watch Face Format](https://developer.android.com/training/wearables/wff) — pure declarative XML, no app code.
 
-![Concentric watch face](screenshot.png)
+![Concentric watch face](screenshot-framed.png)
 
 ## Design
 
