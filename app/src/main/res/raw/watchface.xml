@@ -1,0 +1,1194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WatchFace width="450" height="450">
+  <Metadata key="CLOCK_TYPE" value="ANALOG" />
+  <Metadata key="PREVIEW_TIME" value="10:08:32" />
+
+  <Scene backgroundColor="#0A0A0A">
+
+    <!-- Concentric-circles background pattern -->
+    <PartImage x="0" y="0" width="450" height="450">
+      <Image resource="texture_bg" />
+    </PartImage>
+
+    <!-- Week ring (r=175) and month ring (r=205) tracks -->
+    <PartDraw x="0" y="0" width="450" height="450">
+      <Ellipse x="50" y="50" width="350" height="350">
+        <Stroke thickness="24" color="#1C1C1C" />
+      </Ellipse>
+    </PartDraw>
+    <PartDraw x="0" y="0" width="450" height="450">
+      <Ellipse x="20" y="20" width="410" height="410">
+        <Stroke thickness="24" color="#1C1C1C" />
+      </Ellipse>
+    </PartDraw>
+
+    <!-- Progress fill arcs: from just before day 1 to just after today, behind the text labels -->
+    <PartDraw x="0" y="0" width="450" height="450">
+      <Arc centerX="225" centerY="225" width="350" height="350" startAngle="-5" endAngle="-5">
+        <Transform target="endAngle" value="[DAY_OF_WEEK_S] == &quot;Sun&quot; ? 5.00 : ([DAY_OF_WEEK_S] == &quot;Mon&quot; ? 56.43 : ([DAY_OF_WEEK_S] == &quot;Tue&quot; ? 107.86 : ([DAY_OF_WEEK_S] == &quot;Wed&quot; ? 159.29 : ([DAY_OF_WEEK_S] == &quot;Thu&quot; ? 210.71 : ([DAY_OF_WEEK_S] == &quot;Fri&quot; ? 262.14 : 313.57))))))" />
+        <Stroke thickness="24" color="#C8C8C8" cap="ROUND" />
+      </Arc>
+    </PartDraw>
+    <PartDraw x="0" y="0" width="450" height="450">
+      <Arc centerX="225" centerY="225" width="410" height="410" startAngle="-3" endAngle="-3">
+        <Transform target="endAngle" value="[DAY_0_30] * 360 / [DAYS_IN_MONTH] + 3" />
+        <Stroke thickness="24" color="#C8C8C8" cap="ROUND" />
+      </Arc>
+    </PartDraw>
+
+    <!-- Week ring weekday labels (curved), today lit in accent -->
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_OF_WEEK_S] == &quot;Sun&quot; ? 0 : 255" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="350" height="350" startAngle="-12.00" endAngle="12.00" direction="CLOCKWISE" align="CENTER">
+          <Font family="SYNC_TO_DEVICE" size="18.0" letterSpacing="0" weight="BOLD">
+            <Template><![CDATA[SUN]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_OF_WEEK_S] == &quot;Sun&quot; ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="350" height="350" startAngle="-12.00" endAngle="12.00" direction="CLOCKWISE" align="CENTER">
+          <Font family="SYNC_TO_DEVICE" size="20.0" letterSpacing="0" weight="BOLD">
+            <Template><![CDATA[SUN]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_OF_WEEK_S] == &quot;Mon&quot; ? 0 : 255" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="350" height="350" startAngle="39.43" endAngle="63.43" direction="CLOCKWISE" align="CENTER">
+          <Font family="SYNC_TO_DEVICE" size="18.0" letterSpacing="0" weight="BOLD">
+            <Template><![CDATA[MON]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_OF_WEEK_S] == &quot;Mon&quot; ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="350" height="350" startAngle="39.43" endAngle="63.43" direction="CLOCKWISE" align="CENTER">
+          <Font family="SYNC_TO_DEVICE" size="20.0" letterSpacing="0" weight="BOLD">
+            <Template><![CDATA[MON]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_OF_WEEK_S] == &quot;Tue&quot; ? 0 : 255" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="350" height="350" startAngle="114.86" endAngle="90.86" direction="COUNTER_CLOCKWISE" align="CENTER">
+          <Font family="SYNC_TO_DEVICE" size="18.0" letterSpacing="0" weight="BOLD">
+            <Template><![CDATA[TUE]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_OF_WEEK_S] == &quot;Tue&quot; ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="350" height="350" startAngle="114.86" endAngle="90.86" direction="COUNTER_CLOCKWISE" align="CENTER">
+          <Font family="SYNC_TO_DEVICE" size="20.0" letterSpacing="0" weight="BOLD">
+            <Template><![CDATA[TUE]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_OF_WEEK_S] == &quot;Wed&quot; ? 0 : 255" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="350" height="350" startAngle="166.29" endAngle="142.29" direction="COUNTER_CLOCKWISE" align="CENTER">
+          <Font family="SYNC_TO_DEVICE" size="18.0" letterSpacing="0" weight="BOLD">
+            <Template><![CDATA[WED]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_OF_WEEK_S] == &quot;Wed&quot; ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="350" height="350" startAngle="166.29" endAngle="142.29" direction="COUNTER_CLOCKWISE" align="CENTER">
+          <Font family="SYNC_TO_DEVICE" size="20.0" letterSpacing="0" weight="BOLD">
+            <Template><![CDATA[WED]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_OF_WEEK_S] == &quot;Thu&quot; ? 0 : 255" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="350" height="350" startAngle="217.71" endAngle="193.71" direction="COUNTER_CLOCKWISE" align="CENTER">
+          <Font family="SYNC_TO_DEVICE" size="18.0" letterSpacing="0" weight="BOLD">
+            <Template><![CDATA[THU]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_OF_WEEK_S] == &quot;Thu&quot; ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="350" height="350" startAngle="217.71" endAngle="193.71" direction="COUNTER_CLOCKWISE" align="CENTER">
+          <Font family="SYNC_TO_DEVICE" size="20.0" letterSpacing="0" weight="BOLD">
+            <Template><![CDATA[THU]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_OF_WEEK_S] == &quot;Fri&quot; ? 0 : 255" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="350" height="350" startAngle="269.14" endAngle="245.14" direction="COUNTER_CLOCKWISE" align="CENTER">
+          <Font family="SYNC_TO_DEVICE" size="18.0" letterSpacing="0" weight="BOLD">
+            <Template><![CDATA[FRI]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_OF_WEEK_S] == &quot;Fri&quot; ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="350" height="350" startAngle="269.14" endAngle="245.14" direction="COUNTER_CLOCKWISE" align="CENTER">
+          <Font family="SYNC_TO_DEVICE" size="20.0" letterSpacing="0" weight="BOLD">
+            <Template><![CDATA[FRI]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_OF_WEEK_S] == &quot;Sat&quot; ? 0 : 255" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="350" height="350" startAngle="296.57" endAngle="320.57" direction="CLOCKWISE" align="CENTER">
+          <Font family="SYNC_TO_DEVICE" size="18.0" letterSpacing="0" weight="BOLD">
+            <Template><![CDATA[SAT]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_OF_WEEK_S] == &quot;Sat&quot; ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="350" height="350" startAngle="296.57" endAngle="320.57" direction="CLOCKWISE" align="CENTER">
+          <Font family="SYNC_TO_DEVICE" size="20.0" letterSpacing="0" weight="BOLD">
+            <Template><![CDATA[SAT]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+
+    <!-- Month ring day-of-month labels (curved), spaced by the real days-in-month -->
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="(0 &lt; [DAYS_IN_MONTH]) &amp;&amp; ([DAY_0_30] != 0) ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="0*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="0*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="18.0" weight="BOLD">
+            <Template><![CDATA[1]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_0_30] == 0 ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="0*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="0*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="22.0" weight="BOLD">
+            <Template><![CDATA[1]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="(1 &lt; [DAYS_IN_MONTH]) &amp;&amp; ([DAY_0_30] != 1) ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="1*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="1*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="18.0" weight="BOLD">
+            <Template><![CDATA[2]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_0_30] == 1 ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="1*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="1*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="22.0" weight="BOLD">
+            <Template><![CDATA[2]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="(2 &lt; [DAYS_IN_MONTH]) &amp;&amp; ([DAY_0_30] != 2) ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="2*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="2*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="18.0" weight="BOLD">
+            <Template><![CDATA[3]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_0_30] == 2 ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="2*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="2*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="22.0" weight="BOLD">
+            <Template><![CDATA[3]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="(3 &lt; [DAYS_IN_MONTH]) &amp;&amp; ([DAY_0_30] != 3) ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="3*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="3*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="18.0" weight="BOLD">
+            <Template><![CDATA[4]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_0_30] == 3 ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="3*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="3*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="22.0" weight="BOLD">
+            <Template><![CDATA[4]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="(4 &lt; [DAYS_IN_MONTH]) &amp;&amp; ([DAY_0_30] != 4) ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="4*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="4*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="18.0" weight="BOLD">
+            <Template><![CDATA[5]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_0_30] == 4 ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="4*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="4*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="22.0" weight="BOLD">
+            <Template><![CDATA[5]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="(5 &lt; [DAYS_IN_MONTH]) &amp;&amp; ([DAY_0_30] != 5) ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="5*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="5*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="18.0" weight="BOLD">
+            <Template><![CDATA[6]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_0_30] == 5 ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="5*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="5*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="22.0" weight="BOLD">
+            <Template><![CDATA[6]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="(6 &lt; [DAYS_IN_MONTH]) &amp;&amp; ([DAY_0_30] != 6) ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="6*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="6*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="18.0" weight="BOLD">
+            <Template><![CDATA[7]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_0_30] == 6 ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="6*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="6*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="22.0" weight="BOLD">
+            <Template><![CDATA[7]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="(7 &lt; [DAYS_IN_MONTH]) &amp;&amp; ([DAY_0_30] != 7) ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="7*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="7*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="18.0" weight="BOLD">
+            <Template><![CDATA[8]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_0_30] == 7 ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="7*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="7*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="22.0" weight="BOLD">
+            <Template><![CDATA[8]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="(8 &lt; [DAYS_IN_MONTH]) &amp;&amp; ([DAY_0_30] != 8) ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="8*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="8*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="18.0" weight="BOLD">
+            <Template><![CDATA[9]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_0_30] == 8 ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="8*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="8*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="22.0" weight="BOLD">
+            <Template><![CDATA[9]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="(9 &lt; [DAYS_IN_MONTH]) &amp;&amp; ([DAY_0_30] != 9) ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="9*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="9*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="18.0" weight="BOLD">
+            <Template><![CDATA[10]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_0_30] == 9 ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="9*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="9*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="22.0" weight="BOLD">
+            <Template><![CDATA[10]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="(10 &lt; [DAYS_IN_MONTH]) &amp;&amp; ([DAY_0_30] != 10) ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="10*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="10*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="18.0" weight="BOLD">
+            <Template><![CDATA[11]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_0_30] == 10 ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="10*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="10*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="22.0" weight="BOLD">
+            <Template><![CDATA[11]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="(11 &lt; [DAYS_IN_MONTH]) &amp;&amp; ([DAY_0_30] != 11) ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="11*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="11*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="18.0" weight="BOLD">
+            <Template><![CDATA[12]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_0_30] == 11 ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="11*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="11*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="22.0" weight="BOLD">
+            <Template><![CDATA[12]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="(12 &lt; [DAYS_IN_MONTH]) &amp;&amp; ([DAY_0_30] != 12) ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="12*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="12*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="18.0" weight="BOLD">
+            <Template><![CDATA[13]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_0_30] == 12 ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="12*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="12*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="22.0" weight="BOLD">
+            <Template><![CDATA[13]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="(13 &lt; [DAYS_IN_MONTH]) &amp;&amp; ([DAY_0_30] != 13) ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="13*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="13*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="18.0" weight="BOLD">
+            <Template><![CDATA[14]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_0_30] == 13 ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="13*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="13*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="22.0" weight="BOLD">
+            <Template><![CDATA[14]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="(14 &lt; [DAYS_IN_MONTH]) &amp;&amp; ([DAY_0_30] != 14) ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="14*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="14*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="18.0" weight="BOLD">
+            <Template><![CDATA[15]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_0_30] == 14 ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="14*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="14*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="22.0" weight="BOLD">
+            <Template><![CDATA[15]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="(15 &lt; [DAYS_IN_MONTH]) &amp;&amp; ([DAY_0_30] != 15) ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="15*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="15*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="18.0" weight="BOLD">
+            <Template><![CDATA[16]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_0_30] == 15 ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="15*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="15*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="22.0" weight="BOLD">
+            <Template><![CDATA[16]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="(16 &lt; [DAYS_IN_MONTH]) &amp;&amp; ([DAY_0_30] != 16) ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="16*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="16*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="18.0" weight="BOLD">
+            <Template><![CDATA[17]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_0_30] == 16 ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="16*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="16*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="22.0" weight="BOLD">
+            <Template><![CDATA[17]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="(17 &lt; [DAYS_IN_MONTH]) &amp;&amp; ([DAY_0_30] != 17) ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="17*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="17*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="18.0" weight="BOLD">
+            <Template><![CDATA[18]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_0_30] == 17 ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="17*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="17*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="22.0" weight="BOLD">
+            <Template><![CDATA[18]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="(18 &lt; [DAYS_IN_MONTH]) &amp;&amp; ([DAY_0_30] != 18) ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="18*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="18*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="18.0" weight="BOLD">
+            <Template><![CDATA[19]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_0_30] == 18 ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="18*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="18*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="22.0" weight="BOLD">
+            <Template><![CDATA[19]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="(19 &lt; [DAYS_IN_MONTH]) &amp;&amp; ([DAY_0_30] != 19) ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="19*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="19*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="18.0" weight="BOLD">
+            <Template><![CDATA[20]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_0_30] == 19 ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="19*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="19*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="22.0" weight="BOLD">
+            <Template><![CDATA[20]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="(20 &lt; [DAYS_IN_MONTH]) &amp;&amp; ([DAY_0_30] != 20) ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="20*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="20*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="18.0" weight="BOLD">
+            <Template><![CDATA[21]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_0_30] == 20 ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="20*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="20*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="22.0" weight="BOLD">
+            <Template><![CDATA[21]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="(21 &lt; [DAYS_IN_MONTH]) &amp;&amp; ([DAY_0_30] != 21) ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="21*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="21*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="18.0" weight="BOLD">
+            <Template><![CDATA[22]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_0_30] == 21 ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="21*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="21*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="22.0" weight="BOLD">
+            <Template><![CDATA[22]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="(22 &lt; [DAYS_IN_MONTH]) &amp;&amp; ([DAY_0_30] != 22) ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="22*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="22*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="18.0" weight="BOLD">
+            <Template><![CDATA[23]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_0_30] == 22 ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="22*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="22*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="22.0" weight="BOLD">
+            <Template><![CDATA[23]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="(23 &lt; [DAYS_IN_MONTH]) &amp;&amp; ([DAY_0_30] != 23) ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="23*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="23*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="18.0" weight="BOLD">
+            <Template><![CDATA[24]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_0_30] == 23 ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="23*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="23*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="22.0" weight="BOLD">
+            <Template><![CDATA[24]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="(24 &lt; [DAYS_IN_MONTH]) &amp;&amp; ([DAY_0_30] != 24) ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="24*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="24*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="18.0" weight="BOLD">
+            <Template><![CDATA[25]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_0_30] == 24 ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="24*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="24*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="22.0" weight="BOLD">
+            <Template><![CDATA[25]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="(25 &lt; [DAYS_IN_MONTH]) &amp;&amp; ([DAY_0_30] != 25) ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="25*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="25*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="18.0" weight="BOLD">
+            <Template><![CDATA[26]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_0_30] == 25 ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="25*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="25*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="22.0" weight="BOLD">
+            <Template><![CDATA[26]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="(26 &lt; [DAYS_IN_MONTH]) &amp;&amp; ([DAY_0_30] != 26) ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="26*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="26*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="18.0" weight="BOLD">
+            <Template><![CDATA[27]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_0_30] == 26 ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="26*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="26*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="22.0" weight="BOLD">
+            <Template><![CDATA[27]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="(27 &lt; [DAYS_IN_MONTH]) &amp;&amp; ([DAY_0_30] != 27) ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="27*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="27*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="18.0" weight="BOLD">
+            <Template><![CDATA[28]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_0_30] == 27 ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="27*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="27*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="22.0" weight="BOLD">
+            <Template><![CDATA[28]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="(28 &lt; [DAYS_IN_MONTH]) &amp;&amp; ([DAY_0_30] != 28) ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="28*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="28*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="18.0" weight="BOLD">
+            <Template><![CDATA[29]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_0_30] == 28 ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="28*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="28*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="22.0" weight="BOLD">
+            <Template><![CDATA[29]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="(29 &lt; [DAYS_IN_MONTH]) &amp;&amp; ([DAY_0_30] != 29) ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="29*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="29*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="18.0" weight="BOLD">
+            <Template><![CDATA[30]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_0_30] == 29 ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="29*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="29*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="22.0" weight="BOLD">
+            <Template><![CDATA[30]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="(30 &lt; [DAYS_IN_MONTH]) &amp;&amp; ([DAY_0_30] != 30) ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#707070">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="30*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="30*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="18.0" weight="BOLD">
+            <Template><![CDATA[31]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="[DAY_0_30] == 30 ? 255 : 0" />
+      <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
+          <Transform target="startAngle" value="30*360/[DAYS_IN_MONTH] - 4" />
+          <Transform target="endAngle" value="30*360/[DAYS_IN_MONTH] + 4" />
+          <Font family="SYNC_TO_DEVICE" size="22.0" weight="BOLD">
+            <Template><![CDATA[31]]></Template>
+          </Font>
+        </TextCircular>
+      </PartText>
+    </Group>
+
+    <!-- 2 complications (3/9 o'clock) + static month name (6 o'clock) + 12 o'clock day/night circle -->
+    <ComplicationSlot slotId="1" x="275" y="180" width="90" height="90"
+        supportedTypes="SHORT_TEXT MONOCHROMATIC_IMAGE SMALL_IMAGE EMPTY" displayName="three_oclock">
+      <BoundingOval x="0" y="0" width="90" height="90" />
+      <Complication type="EMPTY">
+        <PartDraw x="0" y="0" width="90" height="90">
+          <Ellipse x="0" y="0" width="90" height="90">
+            <Fill color="#141414" />
+          </Ellipse>
+        </PartDraw>
+        <PartDraw x="0" y="0" width="90" height="90">
+          <Ellipse x="0" y="0" width="90" height="90">
+            <Stroke thickness="2" color="#333333" />
+          </Ellipse>
+        </PartDraw>
+      </Complication>
+      <Complication type="SHORT_TEXT">
+        <PartDraw x="0" y="0" width="90" height="90">
+          <Ellipse x="0" y="0" width="90" height="90">
+            <Fill color="#141414" />
+          </Ellipse>
+        </PartDraw>
+        <PartDraw x="0" y="0" width="90" height="90">
+          <Ellipse x="0" y="0" width="90" height="90">
+            <Stroke thickness="2" color="#333333" />
+          </Ellipse>
+        </PartDraw>
+        <PartImage x="25" y="4" width="40" height="40">
+          <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
+        </PartImage>
+        <PartText x="2" y="40" width="86" height="38" tintColor="#EAEAEA">
+          <Text ellipsis="TRUE">
+            <Font family="SYNC_TO_DEVICE" size="26.0" weight="BOLD">
+              <Template><![CDATA[%s]]>
+                <Parameter expression="[COMPLICATION.TEXT]" />
+              </Template>
+            </Font>
+          </Text>
+        </PartText>
+      </Complication>
+      <Complication type="MONOCHROMATIC_IMAGE">
+        <PartDraw x="0" y="0" width="90" height="90">
+          <Ellipse x="0" y="0" width="90" height="90">
+            <Fill color="#141414" />
+          </Ellipse>
+        </PartDraw>
+        <PartDraw x="0" y="0" width="90" height="90">
+          <Ellipse x="0" y="0" width="90" height="90">
+            <Stroke thickness="2" color="#333333" />
+          </Ellipse>
+        </PartDraw>
+        <PartImage x="25" y="25" width="40" height="40">
+          <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
+        </PartImage>
+      </Complication>
+      <Complication type="SMALL_IMAGE">
+        <PartDraw x="0" y="0" width="90" height="90">
+          <Ellipse x="0" y="0" width="90" height="90">
+            <Fill color="#141414" />
+          </Ellipse>
+        </PartDraw>
+        <PartDraw x="0" y="0" width="90" height="90">
+          <Ellipse x="0" y="0" width="90" height="90">
+            <Stroke thickness="2" color="#333333" />
+          </Ellipse>
+        </PartDraw>
+        <PartImage x="8" y="8" width="74" height="74">
+          <Image resource="[COMPLICATION.SMALL_IMAGE]" />
+        </PartImage>
+      </Complication>
+    </ComplicationSlot>
+    <ComplicationSlot slotId="3" x="85" y="180" width="90" height="90"
+        supportedTypes="SHORT_TEXT MONOCHROMATIC_IMAGE SMALL_IMAGE EMPTY" displayName="nine_oclock">
+      <BoundingOval x="0" y="0" width="90" height="90" />
+      <Complication type="EMPTY">
+        <PartDraw x="0" y="0" width="90" height="90">
+          <Ellipse x="0" y="0" width="90" height="90">
+            <Fill color="#141414" />
+          </Ellipse>
+        </PartDraw>
+        <PartDraw x="0" y="0" width="90" height="90">
+          <Ellipse x="0" y="0" width="90" height="90">
+            <Stroke thickness="2" color="#333333" />
+          </Ellipse>
+        </PartDraw>
+      </Complication>
+      <Complication type="SHORT_TEXT">
+        <PartDraw x="0" y="0" width="90" height="90">
+          <Ellipse x="0" y="0" width="90" height="90">
+            <Fill color="#141414" />
+          </Ellipse>
+        </PartDraw>
+        <PartDraw x="0" y="0" width="90" height="90">
+          <Ellipse x="0" y="0" width="90" height="90">
+            <Stroke thickness="2" color="#333333" />
+          </Ellipse>
+        </PartDraw>
+        <PartImage x="25" y="4" width="40" height="40">
+          <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
+        </PartImage>
+        <PartText x="2" y="40" width="86" height="38" tintColor="#EAEAEA">
+          <Text ellipsis="TRUE">
+            <Font family="SYNC_TO_DEVICE" size="26.0" weight="BOLD">
+              <Template><![CDATA[%s]]>
+                <Parameter expression="[COMPLICATION.TEXT]" />
+              </Template>
+            </Font>
+          </Text>
+        </PartText>
+      </Complication>
+      <Complication type="MONOCHROMATIC_IMAGE">
+        <PartDraw x="0" y="0" width="90" height="90">
+          <Ellipse x="0" y="0" width="90" height="90">
+            <Fill color="#141414" />
+          </Ellipse>
+        </PartDraw>
+        <PartDraw x="0" y="0" width="90" height="90">
+          <Ellipse x="0" y="0" width="90" height="90">
+            <Stroke thickness="2" color="#333333" />
+          </Ellipse>
+        </PartDraw>
+        <PartImage x="25" y="25" width="40" height="40">
+          <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
+        </PartImage>
+      </Complication>
+      <Complication type="SMALL_IMAGE">
+        <PartDraw x="0" y="0" width="90" height="90">
+          <Ellipse x="0" y="0" width="90" height="90">
+            <Fill color="#141414" />
+          </Ellipse>
+        </PartDraw>
+        <PartDraw x="0" y="0" width="90" height="90">
+          <Ellipse x="0" y="0" width="90" height="90">
+            <Stroke thickness="2" color="#333333" />
+          </Ellipse>
+        </PartDraw>
+        <PartImage x="8" y="8" width="74" height="74">
+          <Image resource="[COMPLICATION.SMALL_IMAGE]" />
+        </PartImage>
+      </Complication>
+    </ComplicationSlot>
+
+    <PartDraw x="0" y="0" width="450" height="450">
+      <Ellipse x="180" y="275" width="90" height="90">
+        <Fill color="#141414" />
+      </Ellipse>
+    </PartDraw>
+    <PartDraw x="0" y="0" width="450" height="450">
+      <Ellipse x="180" y="275" width="90" height="90">
+        <Stroke thickness="2" color="#333333" />
+      </Ellipse>
+    </PartDraw>
+    <PartText x="182" y="297" width="86" height="42" tintColor="#EAEAEA">
+      <Text ellipsis="TRUE">
+        <Font family="SYNC_TO_DEVICE" size="29.0" weight="BOLD">
+          <Template><![CDATA[%s]]>
+            <Parameter expression="[MONTH_S]" />
+          </Template>
+        </Font>
+      </Text>
+    </PartText>
+
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="([HOUR_0_23] &gt;= 0 &amp;&amp; [HOUR_0_23] &lt; 2) ? 255 : 0" />
+      <PartDraw x="180" y="85" width="90" height="90">
+        <Ellipse x="0" y="0" width="90" height="90">
+          <Fill color="#0B1130" />
+        </Ellipse>
+      </PartDraw>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="([HOUR_0_23] &gt;= 2 &amp;&amp; [HOUR_0_23] &lt; 4) ? 255 : 0" />
+      <PartDraw x="180" y="85" width="90" height="90">
+        <Ellipse x="0" y="0" width="90" height="90">
+          <Fill color="#58435B" />
+        </Ellipse>
+      </PartDraw>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="([HOUR_0_23] &gt;= 4 &amp;&amp; [HOUR_0_23] &lt; 6) ? 255 : 0" />
+      <PartDraw x="180" y="85" width="90" height="90">
+        <Ellipse x="0" y="0" width="90" height="90">
+          <Fill color="#A57485" />
+        </Ellipse>
+      </PartDraw>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="([HOUR_0_23] &gt;= 6 &amp;&amp; [HOUR_0_23] &lt; 8) ? 255 : 0" />
+      <PartDraw x="180" y="85" width="90" height="90">
+        <Ellipse x="0" y="0" width="90" height="90">
+          <Fill color="#F2A6B0" />
+        </Ellipse>
+      </PartDraw>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="([HOUR_0_23] &gt;= 8 &amp;&amp; [HOUR_0_23] &lt; 10) ? 255 : 0" />
+      <PartDraw x="180" y="85" width="90" height="90">
+        <Ellipse x="0" y="0" width="90" height="90">
+          <Fill color="#F5BDAB" />
+        </Ellipse>
+      </PartDraw>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="([HOUR_0_23] &gt;= 10 &amp;&amp; [HOUR_0_23] &lt; 12) ? 255 : 0" />
+      <PartDraw x="180" y="85" width="90" height="90">
+        <Ellipse x="0" y="0" width="90" height="90">
+          <Fill color="#F9D4A5" />
+        </Ellipse>
+      </PartDraw>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="([HOUR_0_23] &gt;= 12 &amp;&amp; [HOUR_0_23] &lt; 14) ? 255 : 0" />
+      <PartDraw x="180" y="85" width="90" height="90">
+        <Ellipse x="0" y="0" width="90" height="90">
+          <Fill color="#FCEBA0" />
+        </Ellipse>
+      </PartDraw>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="([HOUR_0_23] &gt;= 14 &amp;&amp; [HOUR_0_23] &lt; 16) ? 255 : 0" />
+      <PartDraw x="180" y="85" width="90" height="90">
+        <Ellipse x="0" y="0" width="90" height="90">
+          <Fill color="#F0B979" />
+        </Ellipse>
+      </PartDraw>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="([HOUR_0_23] &gt;= 16 &amp;&amp; [HOUR_0_23] &lt; 18) ? 255 : 0" />
+      <PartDraw x="180" y="85" width="90" height="90">
+        <Ellipse x="0" y="0" width="90" height="90">
+          <Fill color="#E58752" />
+        </Ellipse>
+      </PartDraw>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="([HOUR_0_23] &gt;= 18 &amp;&amp; [HOUR_0_23] &lt; 20) ? 255 : 0" />
+      <PartDraw x="180" y="85" width="90" height="90">
+        <Ellipse x="0" y="0" width="90" height="90">
+          <Fill color="#D9552B" />
+        </Ellipse>
+      </PartDraw>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="([HOUR_0_23] &gt;= 20 &amp;&amp; [HOUR_0_23] &lt; 22) ? 255 : 0" />
+      <PartDraw x="180" y="85" width="90" height="90">
+        <Ellipse x="0" y="0" width="90" height="90">
+          <Fill color="#943E2D" />
+        </Ellipse>
+      </PartDraw>
+    </Group>
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Transform target="alpha" value="([HOUR_0_23] &gt;= 22) ? 255 : 0" />
+      <PartDraw x="180" y="85" width="90" height="90">
+        <Ellipse x="0" y="0" width="90" height="90">
+          <Fill color="#50282E" />
+        </Ellipse>
+      </PartDraw>
+    </Group>
+
+    <AnalogClock x="0" y="0" width="450" height="450">
+      <HourHand resource="hand" x="216" y="135" width="18" height="90"
+          pivotX="0.5" pivotY="1.0" tintColor="#EAEAEA" />
+      <MinuteHand resource="hand" x="218" y="95" width="14" height="130"
+          pivotX="0.5" pivotY="1.0" tintColor="#EAEAEA" />
+    </AnalogClock>
+
+  </Scene>
+</WatchFace>

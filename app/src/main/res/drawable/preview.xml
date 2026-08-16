@@ -1,0 +1,68 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="320dp"
+    android:height="320dp"
+    android:viewportWidth="320"
+    android:viewportHeight="320">
+
+    <path
+        android:pathData="M160,160 m-160,0 a160,160 0 1,0 320,0 a160,160 0 1,0 -320,0"
+        android:fillColor="#0A0A0A" />
+
+    <!-- week ring -->
+    <path
+        android:pathData="M160,160 m-96,0 a96,96 0 1,0 192,0 a96,96 0 1,0 -192,0"
+        android:strokeColor="#333333"
+        android:strokeWidth="2"
+        android:fillColor="#00000000" />
+    <path
+        android:pathData="M160,208 L160,224"
+        android:strokeColor="#4FD1C5"
+        android:strokeWidth="4"
+        android:strokeLineCap="round" />
+
+    <!-- month ring -->
+    <path
+        android:pathData="M160,160 m-128,0 a128,128 0 1,0 256,0 a128,128 0 1,0 -256,0"
+        android:strokeColor="#333333"
+        android:strokeWidth="2"
+        android:fillColor="#00000000" />
+    <path
+        android:pathData="M215,242 L226,258"
+        android:strokeColor="#4FD1C5"
+        android:strokeWidth="4"
+        android:strokeLineCap="round" />
+
+    <!-- 3/6/9 o'clock complication placeholders -->
+    <path
+        android:pathData="M288,160 m-24,0 a24,24 0 1,0 48,0 a24,24 0 1,0 -48,0"
+        android:strokeColor="#5A5A5A"
+        android:strokeWidth="2"
+        android:fillColor="#141414" />
+    <path
+        android:pathData="M160,288 m-24,0 a24,24 0 1,0 48,0 a24,24 0 1,0 -48,0"
+        android:strokeColor="#5A5A5A"
+        android:strokeWidth="2"
+        android:fillColor="#141414" />
+    <path
+        android:pathData="M32,160 m-24,0 a24,24 0 1,0 48,0 a24,24 0 1,0 -48,0"
+        android:strokeColor="#5A5A5A"
+        android:strokeWidth="2"
+        android:fillColor="#141414" />
+
+    <!-- 12 o'clock day/night circle -->
+    <path
+        android:pathData="M160,32 m-24,0 a24,24 0 1,0 48,0 a24,24 0 1,0 -48,0"
+        android:fillColor="#F2A6B0" />
+
+    <!-- hands -->
+    <path
+        android:pathData="M160,160 L160,115"
+        android:strokeColor="#EAEAEA"
+        android:strokeWidth="5"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M160,160 L192,140"
+        android:strokeColor="#EAEAEA"
+        android:strokeWidth="4"
+        android:strokeLineCap="round" />
+</vector>
