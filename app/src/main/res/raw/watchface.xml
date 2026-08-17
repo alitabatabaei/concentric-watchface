@@ -22,10 +22,10 @@
       </Ellipse>
     </PartDraw>
 
-    <!-- Progress fill arcs: from just before day 1 to just after today, behind the text labels -->
+    <!-- Progress fill arcs: week grows through the day toward the next label; month covers through today -->
     <PartDraw x="0" y="0" width="450" height="450">
       <Arc centerX="225" centerY="225" width="350" height="350" startAngle="-5" endAngle="-5">
-        <Transform target="endAngle" value="[DAY_OF_WEEK_S] == &quot;Sun&quot; ? 5.00 : ([DAY_OF_WEEK_S] == &quot;Mon&quot; ? 56.43 : ([DAY_OF_WEEK_S] == &quot;Tue&quot; ? 107.86 : ([DAY_OF_WEEK_S] == &quot;Wed&quot; ? 159.29 : ([DAY_OF_WEEK_S] == &quot;Thu&quot; ? 210.71 : ([DAY_OF_WEEK_S] == &quot;Fri&quot; ? 262.14 : 313.57))))))" />
+        <Transform target="endAngle" value="([DAY_OF_WEEK_S] == &quot;Sun&quot; ? 5.00 : ([DAY_OF_WEEK_S] == &quot;Mon&quot; ? 56.43 : ([DAY_OF_WEEK_S] == &quot;Tue&quot; ? 107.86 : ([DAY_OF_WEEK_S] == &quot;Wed&quot; ? 159.29 : ([DAY_OF_WEEK_S] == &quot;Thu&quot; ? 210.71 : ([DAY_OF_WEEK_S] == &quot;Fri&quot; ? 262.14 : 313.57)))))) + 30.5 * ([HOUR_0_23] - [HOUR_0_23] % 2) / 22" />
         <Stroke thickness="24" color="#C8C8C8" cap="ROUND" />
       </Arc>
     </PartDraw>
