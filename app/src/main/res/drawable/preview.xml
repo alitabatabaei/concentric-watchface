@@ -54,15 +54,35 @@
         android:pathData="M160,32 m-24,0 a24,24 0 1,0 48,0 a24,24 0 1,0 -48,0"
         android:fillColor="#F2A6B0" />
 
-    <!-- hands -->
-    <path
-        android:pathData="M160,160 L160,115"
-        android:strokeColor="#EAEAEA"
-        android:strokeWidth="5"
-        android:strokeLineCap="round" />
-    <path
-        android:pathData="M160,160 L192,140"
-        android:strokeColor="#EAEAEA"
-        android:strokeWidth="4"
-        android:strokeLineCap="round" />
+    <!-- hands (10:08): slim batons, black ridge on far half -->
+    <group
+        android:pivotX="160"
+        android:pivotY="160"
+        android:rotation="304">
+        <path
+            android:pathData="M160,165 L160,96"
+            android:strokeColor="#EAEAEA"
+            android:strokeWidth="10"
+            android:strokeLineCap="round" />
+        <path
+            android:pathData="M160,128 L160,99"
+            android:strokeColor="#000000"
+            android:strokeWidth="3"
+            android:strokeLineCap="round" />
+    </group>
+    <group
+        android:pivotX="160"
+        android:pivotY="160"
+        android:rotation="51.2">
+        <path
+            android:pathData="M160,163.6 L160,56.9"
+            android:strokeColor="#EAEAEA"
+            android:strokeWidth="7"
+            android:strokeLineCap="round" />
+        <path
+            android:pathData="M160,108.4 L160,59.7"
+            android:strokeColor="#000000"
+            android:strokeWidth="2.5"
+            android:strokeLineCap="round" />
+    </group>
 </vector>

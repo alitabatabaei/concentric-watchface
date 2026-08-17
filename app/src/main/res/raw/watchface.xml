@@ -1184,10 +1184,10 @@
     </Group>
 
     <AnalogClock x="0" y="0" width="450" height="450">
-      <HourHand resource="hand" x="216" y="135" width="18" height="90"
-          pivotX="0.5" pivotY="1.0" tintColor="#EAEAEA" />
-      <MinuteHand resource="hand" x="218" y="95" width="14" height="130"
-          pivotX="0.5" pivotY="1.0" tintColor="#EAEAEA" />
+      <HourHand resource="hand_hour" x="218" y="135" width="14" height="97"
+          pivotX="0.5" pivotY="0.92784" />
+      <MinuteHand resource="hand_minute" x="220" y="80" width="10" height="150"
+          pivotX="0.5" pivotY="0.96667" />
     </AnalogClock>
 
   </Scene>
