@@ -924,7 +924,7 @@
       </PartText>
     </Group>
 
-    <!-- 2 complications (3/9 o'clock) + static month name (6 o'clock) + 12 o'clock day/night circle -->
+    <!-- 2 complications (3/9 o'clock) + static month name (6 o'clock) + 12 o'clock sun/moon -->
     <ComplicationSlot slotId="1" x="275" y="180" width="90" height="90"
         supportedTypes="SHORT_TEXT MONOCHROMATIC_IMAGE SMALL_IMAGE EMPTY" displayName="three_oclock">
       <BoundingOval x="0" y="0" width="90" height="90" />
@@ -1086,102 +1086,14 @@
       </Text>
     </PartText>
 
-    <Group x="0" y="0" width="450" height="450" alpha="0">
-      <Transform target="alpha" value="([HOUR_0_23] &gt;= 0 &amp;&amp; [HOUR_0_23] &lt; 2) ? 255 : 0" />
-      <PartDraw x="180" y="85" width="90" height="90">
-        <Ellipse x="0" y="0" width="90" height="90">
-          <Fill color="#0B1130" />
-        </Ellipse>
-      </PartDraw>
-    </Group>
-    <Group x="0" y="0" width="450" height="450" alpha="0">
-      <Transform target="alpha" value="([HOUR_0_23] &gt;= 2 &amp;&amp; [HOUR_0_23] &lt; 4) ? 255 : 0" />
-      <PartDraw x="180" y="85" width="90" height="90">
-        <Ellipse x="0" y="0" width="90" height="90">
-          <Fill color="#58435B" />
-        </Ellipse>
-      </PartDraw>
-    </Group>
-    <Group x="0" y="0" width="450" height="450" alpha="0">
-      <Transform target="alpha" value="([HOUR_0_23] &gt;= 4 &amp;&amp; [HOUR_0_23] &lt; 6) ? 255 : 0" />
-      <PartDraw x="180" y="85" width="90" height="90">
-        <Ellipse x="0" y="0" width="90" height="90">
-          <Fill color="#A57485" />
-        </Ellipse>
-      </PartDraw>
-    </Group>
-    <Group x="0" y="0" width="450" height="450" alpha="0">
-      <Transform target="alpha" value="([HOUR_0_23] &gt;= 6 &amp;&amp; [HOUR_0_23] &lt; 8) ? 255 : 0" />
-      <PartDraw x="180" y="85" width="90" height="90">
-        <Ellipse x="0" y="0" width="90" height="90">
-          <Fill color="#F2A6B0" />
-        </Ellipse>
-      </PartDraw>
-    </Group>
-    <Group x="0" y="0" width="450" height="450" alpha="0">
-      <Transform target="alpha" value="([HOUR_0_23] &gt;= 8 &amp;&amp; [HOUR_0_23] &lt; 10) ? 255 : 0" />
-      <PartDraw x="180" y="85" width="90" height="90">
-        <Ellipse x="0" y="0" width="90" height="90">
-          <Fill color="#F5BDAB" />
-        </Ellipse>
-      </PartDraw>
-    </Group>
-    <Group x="0" y="0" width="450" height="450" alpha="0">
-      <Transform target="alpha" value="([HOUR_0_23] &gt;= 10 &amp;&amp; [HOUR_0_23] &lt; 12) ? 255 : 0" />
-      <PartDraw x="180" y="85" width="90" height="90">
-        <Ellipse x="0" y="0" width="90" height="90">
-          <Fill color="#F9D4A5" />
-        </Ellipse>
-      </PartDraw>
-    </Group>
-    <Group x="0" y="0" width="450" height="450" alpha="0">
-      <Transform target="alpha" value="([HOUR_0_23] &gt;= 12 &amp;&amp; [HOUR_0_23] &lt; 14) ? 255 : 0" />
-      <PartDraw x="180" y="85" width="90" height="90">
-        <Ellipse x="0" y="0" width="90" height="90">
-          <Fill color="#FCEBA0" />
-        </Ellipse>
-      </PartDraw>
-    </Group>
-    <Group x="0" y="0" width="450" height="450" alpha="0">
-      <Transform target="alpha" value="([HOUR_0_23] &gt;= 14 &amp;&amp; [HOUR_0_23] &lt; 16) ? 255 : 0" />
-      <PartDraw x="180" y="85" width="90" height="90">
-        <Ellipse x="0" y="0" width="90" height="90">
-          <Fill color="#F0B979" />
-        </Ellipse>
-      </PartDraw>
-    </Group>
-    <Group x="0" y="0" width="450" height="450" alpha="0">
-      <Transform target="alpha" value="([HOUR_0_23] &gt;= 16 &amp;&amp; [HOUR_0_23] &lt; 18) ? 255 : 0" />
-      <PartDraw x="180" y="85" width="90" height="90">
-        <Ellipse x="0" y="0" width="90" height="90">
-          <Fill color="#E58752" />
-        </Ellipse>
-      </PartDraw>
-    </Group>
-    <Group x="0" y="0" width="450" height="450" alpha="0">
-      <Transform target="alpha" value="([HOUR_0_23] &gt;= 18 &amp;&amp; [HOUR_0_23] &lt; 20) ? 255 : 0" />
-      <PartDraw x="180" y="85" width="90" height="90">
-        <Ellipse x="0" y="0" width="90" height="90">
-          <Fill color="#D9552B" />
-        </Ellipse>
-      </PartDraw>
-    </Group>
-    <Group x="0" y="0" width="450" height="450" alpha="0">
-      <Transform target="alpha" value="([HOUR_0_23] &gt;= 20 &amp;&amp; [HOUR_0_23] &lt; 22) ? 255 : 0" />
-      <PartDraw x="180" y="85" width="90" height="90">
-        <Ellipse x="0" y="0" width="90" height="90">
-          <Fill color="#943E2D" />
-        </Ellipse>
-      </PartDraw>
-    </Group>
-    <Group x="0" y="0" width="450" height="450" alpha="0">
-      <Transform target="alpha" value="([HOUR_0_23] &gt;= 22) ? 255 : 0" />
-      <PartDraw x="180" y="85" width="90" height="90">
-        <Ellipse x="0" y="0" width="90" height="90">
-          <Fill color="#50282E" />
-        </Ellipse>
-      </PartDraw>
-    </Group>
+    <PartImage x="180" y="85" width="90" height="90" alpha="0">
+      <Transform target="alpha" value="([HOUR_0_23] &gt;= 6 &amp;&amp; [HOUR_0_23] &lt; 18) ? 255 : 0" />
+      <Image resource="sun" />
+    </PartImage>
+    <PartImage x="180" y="85" width="90" height="90" alpha="0">
+      <Transform target="alpha" value="([HOUR_0_23] &lt; 6 || [HOUR_0_23] &gt;= 18) ? 255 : 0" />
+      <Image resource="moon" />
+    </PartImage>
 
     <AnalogClock x="0" y="0" width="450" height="450">
       <HourHand resource="hand_hour" x="218" y="135" width="14" height="97"

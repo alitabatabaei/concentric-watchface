@@ -49,10 +49,20 @@
         android:strokeWidth="2"
         android:fillColor="#141414" />
 
-    <!-- 12 o'clock day/night circle -->
+    <!-- 12 o'clock sun (preview is 10:08) -->
     <path
-        android:pathData="M160,32 m-24,0 a24,24 0 1,0 48,0 a24,24 0 1,0 -48,0"
-        android:fillColor="#F2A6B0" />
+        android:pathData="M160,32 m-10,0 a10,10 0 1,0 20,0 a10,10 0 1,0 -20,0"
+        android:fillColor="#F5C56A" />
+    <path
+        android:pathData="M157.5,18 L160,8 L162.5,18 Z
+                          M168.5,20.5 L177,15 L171.5,24 Z
+                          M174,29.5 L184,32 L174,34.5 Z
+                          M171.5,40 L177,49 L168.5,43.5 Z
+                          M162.5,46 L160,56 L157.5,46 Z
+                          M151.5,43.5 L143,49 L148.5,40 Z
+                          M146,34.5 L136,32 L146,29.5 Z
+                          M148.5,24 L143,15 L151.5,20.5 Z"
+        android:fillColor="#F5C56A" />
 
     <!-- hands (10:08): slim batons, black ridge on far half -->
     <group
