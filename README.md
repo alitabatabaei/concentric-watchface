@@ -19,6 +19,12 @@ Watch Face Format requires **Wear OS 4+** (API 33+). Building and installing req
 ## Build & install
 
 ```
+./install.sh
+```
+
+or manually:
+
+```
 ./gradlew assembleDebug
 adb install -r app/build/outputs/apk/debug/app-debug.apk
 ```

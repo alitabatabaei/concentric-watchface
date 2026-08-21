@@ -23,18 +23,37 @@
     </PartDraw>
 
     <!-- Progress fill arcs: week grows through the day toward the next label; month covers through today -->
-    <PartDraw x="0" y="0" width="450" height="450">
-      <Arc centerX="225" centerY="225" width="350" height="350" startAngle="-5" endAngle="-5">
-        <Transform target="endAngle" value="([DAY_OF_WEEK_S] == &quot;Sun&quot; ? 5.00 : ([DAY_OF_WEEK_S] == &quot;Mon&quot; ? 56.43 : ([DAY_OF_WEEK_S] == &quot;Tue&quot; ? 107.86 : ([DAY_OF_WEEK_S] == &quot;Wed&quot; ? 159.29 : ([DAY_OF_WEEK_S] == &quot;Thu&quot; ? 210.71 : ([DAY_OF_WEEK_S] == &quot;Fri&quot; ? 262.14 : 313.57)))))) + 30.5 * ([HOUR_0_23] - [HOUR_0_23] % 2) / 22" />
-        <Stroke thickness="24" color="#C8C8C8" cap="ROUND" />
-      </Arc>
-    </PartDraw>
-    <PartDraw x="0" y="0" width="450" height="450">
-      <Arc centerX="225" centerY="225" width="410" height="410" startAngle="-3" endAngle="-3">
-        <Transform target="endAngle" value="[DAY_0_30] * 360 / [DAYS_IN_MONTH] + 3" />
-        <Stroke thickness="24" color="#C8C8C8" cap="ROUND" />
-      </Arc>
-    </PartDraw>
+    <!-- Hidden in ambient (see the thin-outline versions below) to limit lit OLED area -->
+    <Group x="0" y="0" width="450" height="450">
+      <Variant mode="AMBIENT" target="alpha" value="0" />
+      <PartDraw x="0" y="0" width="450" height="450">
+        <Arc centerX="225" centerY="225" width="350" height="350" startAngle="-5" endAngle="-5">
+          <Transform target="endAngle" value="([DAY_OF_WEEK_S] == &quot;Sun&quot; ? 5.00 : ([DAY_OF_WEEK_S] == &quot;Mon&quot; ? 56.43 : ([DAY_OF_WEEK_S] == &quot;Tue&quot; ? 107.86 : ([DAY_OF_WEEK_S] == &quot;Wed&quot; ? 159.29 : ([DAY_OF_WEEK_S] == &quot;Thu&quot; ? 210.71 : ([DAY_OF_WEEK_S] == &quot;Fri&quot; ? 262.14 : 313.57)))))) + 30.5 * ([HOUR_0_23] - [HOUR_0_23] % 2) / 22" />
+          <Stroke thickness="24" color="#C8C8C8" cap="ROUND" />
+        </Arc>
+      </PartDraw>
+      <PartDraw x="0" y="0" width="450" height="450">
+        <Arc centerX="225" centerY="225" width="410" height="410" startAngle="-3" endAngle="-3">
+          <Transform target="endAngle" value="[DAY_0_30] * 360 / [DAYS_IN_MONTH] + 3" />
+          <Stroke thickness="24" color="#C8C8C8" cap="ROUND" />
+        </Arc>
+      </PartDraw>
+    </Group>
+
+    <!-- Same progress arcs, redrawn as thin outlines; only visible in ambient -->
+    <Group x="0" y="0" width="450" height="450" alpha="0">
+      <Variant mode="AMBIENT" target="alpha" value="255" />
+      <PartDraw x="0" y="0" width="450" height="450">
+        <Arc centerX="225" centerY="225" width="326" height="326" startAngle="-5" endAngle="-5">
+          <Transform target="endAngle" value="([DAY_OF_WEEK_S] == &quot;Sun&quot; ? 5.00 : ([DAY_OF_WEEK_S] == &quot;Mon&quot; ? 56.43 : ([DAY_OF_WEEK_S] == &quot;Tue&quot; ? 107.86 : ([DAY_OF_WEEK_S] == &quot;Wed&quot; ? 159.29 : ([DAY_OF_WEEK_S] == &quot;Thu&quot; ? 210.71 : ([DAY_OF_WEEK_S] == &quot;Fri&quot; ? 262.14 : 313.57)))))) + 30.5 * ([HOUR_0_23] - [HOUR_0_23] % 2) / 22" />
+        </Arc>
+      </PartDraw>
+      <PartDraw x="0" y="0" width="450" height="450">
+        <Arc centerX="225" centerY="225" width="434" height="434" startAngle="-3" endAngle="-3">
+          <Transform target="endAngle" value="[DAY_0_30] * 360 / [DAYS_IN_MONTH] + 3" />
+        </Arc>
+      </PartDraw>
+    </Group>
 
     <!-- Week ring weekday labels (curved), today lit in accent -->
     <Group x="0" y="0" width="450" height="450" alpha="0">
@@ -50,6 +69,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_OF_WEEK_S] == &quot;Sun&quot; ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="350" height="350" startAngle="-12.00" endAngle="12.00" direction="CLOCKWISE" align="CENTER">
           <Font family="SYNC_TO_DEVICE" size="20.0" letterSpacing="0" weight="BOLD">
             <Template><![CDATA[SUN]]></Template>
@@ -70,6 +90,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_OF_WEEK_S] == &quot;Mon&quot; ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="350" height="350" startAngle="39.43" endAngle="63.43" direction="CLOCKWISE" align="CENTER">
           <Font family="SYNC_TO_DEVICE" size="20.0" letterSpacing="0" weight="BOLD">
             <Template><![CDATA[MON]]></Template>
@@ -90,6 +111,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_OF_WEEK_S] == &quot;Tue&quot; ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="350" height="350" startAngle="114.86" endAngle="90.86" direction="COUNTER_CLOCKWISE" align="CENTER">
           <Font family="SYNC_TO_DEVICE" size="20.0" letterSpacing="0" weight="BOLD">
             <Template><![CDATA[TUE]]></Template>
@@ -110,6 +132,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_OF_WEEK_S] == &quot;Wed&quot; ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="350" height="350" startAngle="166.29" endAngle="142.29" direction="COUNTER_CLOCKWISE" align="CENTER">
           <Font family="SYNC_TO_DEVICE" size="20.0" letterSpacing="0" weight="BOLD">
             <Template><![CDATA[WED]]></Template>
@@ -130,6 +153,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_OF_WEEK_S] == &quot;Thu&quot; ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="350" height="350" startAngle="217.71" endAngle="193.71" direction="COUNTER_CLOCKWISE" align="CENTER">
           <Font family="SYNC_TO_DEVICE" size="20.0" letterSpacing="0" weight="BOLD">
             <Template><![CDATA[THU]]></Template>
@@ -150,6 +174,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_OF_WEEK_S] == &quot;Fri&quot; ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="350" height="350" startAngle="269.14" endAngle="245.14" direction="COUNTER_CLOCKWISE" align="CENTER">
           <Font family="SYNC_TO_DEVICE" size="20.0" letterSpacing="0" weight="BOLD">
             <Template><![CDATA[FRI]]></Template>
@@ -170,6 +195,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_OF_WEEK_S] == &quot;Sat&quot; ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="350" height="350" startAngle="296.57" endAngle="320.57" direction="CLOCKWISE" align="CENTER">
           <Font family="SYNC_TO_DEVICE" size="20.0" letterSpacing="0" weight="BOLD">
             <Template><![CDATA[SAT]]></Template>
@@ -194,6 +220,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_0_30] == 0 ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
           <Transform target="startAngle" value="0*360/[DAYS_IN_MONTH] - 4" />
           <Transform target="endAngle" value="0*360/[DAYS_IN_MONTH] + 4" />
@@ -218,6 +245,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_0_30] == 1 ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
           <Transform target="startAngle" value="1*360/[DAYS_IN_MONTH] - 4" />
           <Transform target="endAngle" value="1*360/[DAYS_IN_MONTH] + 4" />
@@ -242,6 +270,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_0_30] == 2 ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
           <Transform target="startAngle" value="2*360/[DAYS_IN_MONTH] - 4" />
           <Transform target="endAngle" value="2*360/[DAYS_IN_MONTH] + 4" />
@@ -266,6 +295,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_0_30] == 3 ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
           <Transform target="startAngle" value="3*360/[DAYS_IN_MONTH] - 4" />
           <Transform target="endAngle" value="3*360/[DAYS_IN_MONTH] + 4" />
@@ -290,6 +320,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_0_30] == 4 ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
           <Transform target="startAngle" value="4*360/[DAYS_IN_MONTH] - 4" />
           <Transform target="endAngle" value="4*360/[DAYS_IN_MONTH] + 4" />
@@ -314,6 +345,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_0_30] == 5 ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
           <Transform target="startAngle" value="5*360/[DAYS_IN_MONTH] - 4" />
           <Transform target="endAngle" value="5*360/[DAYS_IN_MONTH] + 4" />
@@ -338,6 +370,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_0_30] == 6 ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
           <Transform target="startAngle" value="6*360/[DAYS_IN_MONTH] - 4" />
           <Transform target="endAngle" value="6*360/[DAYS_IN_MONTH] + 4" />
@@ -362,6 +395,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_0_30] == 7 ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
           <Transform target="startAngle" value="7*360/[DAYS_IN_MONTH] - 4" />
           <Transform target="endAngle" value="7*360/[DAYS_IN_MONTH] + 4" />
@@ -386,6 +420,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_0_30] == 8 ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
           <Transform target="startAngle" value="8*360/[DAYS_IN_MONTH] - 4" />
           <Transform target="endAngle" value="8*360/[DAYS_IN_MONTH] + 4" />
@@ -410,6 +445,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_0_30] == 9 ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
           <Transform target="startAngle" value="9*360/[DAYS_IN_MONTH] - 4" />
           <Transform target="endAngle" value="9*360/[DAYS_IN_MONTH] + 4" />
@@ -434,6 +470,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_0_30] == 10 ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
           <Transform target="startAngle" value="10*360/[DAYS_IN_MONTH] - 4" />
           <Transform target="endAngle" value="10*360/[DAYS_IN_MONTH] + 4" />
@@ -458,6 +495,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_0_30] == 11 ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
           <Transform target="startAngle" value="11*360/[DAYS_IN_MONTH] - 4" />
           <Transform target="endAngle" value="11*360/[DAYS_IN_MONTH] + 4" />
@@ -482,6 +520,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_0_30] == 12 ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
           <Transform target="startAngle" value="12*360/[DAYS_IN_MONTH] - 4" />
           <Transform target="endAngle" value="12*360/[DAYS_IN_MONTH] + 4" />
@@ -506,6 +545,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_0_30] == 13 ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
           <Transform target="startAngle" value="13*360/[DAYS_IN_MONTH] - 4" />
           <Transform target="endAngle" value="13*360/[DAYS_IN_MONTH] + 4" />
@@ -530,6 +570,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_0_30] == 14 ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
           <Transform target="startAngle" value="14*360/[DAYS_IN_MONTH] - 4" />
           <Transform target="endAngle" value="14*360/[DAYS_IN_MONTH] + 4" />
@@ -554,6 +595,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_0_30] == 15 ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
           <Transform target="startAngle" value="15*360/[DAYS_IN_MONTH] - 4" />
           <Transform target="endAngle" value="15*360/[DAYS_IN_MONTH] + 4" />
@@ -578,6 +620,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_0_30] == 16 ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
           <Transform target="startAngle" value="16*360/[DAYS_IN_MONTH] - 4" />
           <Transform target="endAngle" value="16*360/[DAYS_IN_MONTH] + 4" />
@@ -602,6 +645,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_0_30] == 17 ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
           <Transform target="startAngle" value="17*360/[DAYS_IN_MONTH] - 4" />
           <Transform target="endAngle" value="17*360/[DAYS_IN_MONTH] + 4" />
@@ -626,6 +670,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_0_30] == 18 ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
           <Transform target="startAngle" value="18*360/[DAYS_IN_MONTH] - 4" />
           <Transform target="endAngle" value="18*360/[DAYS_IN_MONTH] + 4" />
@@ -650,6 +695,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_0_30] == 19 ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
           <Transform target="startAngle" value="19*360/[DAYS_IN_MONTH] - 4" />
           <Transform target="endAngle" value="19*360/[DAYS_IN_MONTH] + 4" />
@@ -674,6 +720,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_0_30] == 20 ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
           <Transform target="startAngle" value="20*360/[DAYS_IN_MONTH] - 4" />
           <Transform target="endAngle" value="20*360/[DAYS_IN_MONTH] + 4" />
@@ -698,6 +745,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_0_30] == 21 ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
           <Transform target="startAngle" value="21*360/[DAYS_IN_MONTH] - 4" />
           <Transform target="endAngle" value="21*360/[DAYS_IN_MONTH] + 4" />
@@ -722,6 +770,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_0_30] == 22 ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
           <Transform target="startAngle" value="22*360/[DAYS_IN_MONTH] - 4" />
           <Transform target="endAngle" value="22*360/[DAYS_IN_MONTH] + 4" />
@@ -746,6 +795,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_0_30] == 23 ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
           <Transform target="startAngle" value="23*360/[DAYS_IN_MONTH] - 4" />
           <Transform target="endAngle" value="23*360/[DAYS_IN_MONTH] + 4" />
@@ -770,6 +820,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_0_30] == 24 ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
           <Transform target="startAngle" value="24*360/[DAYS_IN_MONTH] - 4" />
           <Transform target="endAngle" value="24*360/[DAYS_IN_MONTH] + 4" />
@@ -794,6 +845,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_0_30] == 25 ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
           <Transform target="startAngle" value="25*360/[DAYS_IN_MONTH] - 4" />
           <Transform target="endAngle" value="25*360/[DAYS_IN_MONTH] + 4" />
@@ -818,6 +870,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_0_30] == 26 ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
           <Transform target="startAngle" value="26*360/[DAYS_IN_MONTH] - 4" />
           <Transform target="endAngle" value="26*360/[DAYS_IN_MONTH] + 4" />
@@ -842,6 +895,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_0_30] == 27 ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
           <Transform target="startAngle" value="27*360/[DAYS_IN_MONTH] - 4" />
           <Transform target="endAngle" value="27*360/[DAYS_IN_MONTH] + 4" />
@@ -866,6 +920,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_0_30] == 28 ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
           <Transform target="startAngle" value="28*360/[DAYS_IN_MONTH] - 4" />
           <Transform target="endAngle" value="28*360/[DAYS_IN_MONTH] + 4" />
@@ -890,6 +945,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_0_30] == 29 ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
           <Transform target="startAngle" value="29*360/[DAYS_IN_MONTH] - 4" />
           <Transform target="endAngle" value="29*360/[DAYS_IN_MONTH] + 4" />
@@ -914,6 +970,7 @@
     <Group x="0" y="0" width="450" height="450" alpha="0">
       <Transform target="alpha" value="[DAY_0_30] == 30 ? 255 : 0" />
       <PartText x="0" y="0" width="450" height="450" tintColor="#000000">
+        <Variant mode="AMBIENT" target="tintColor" value="#EAEAEA" />
         <TextCircular centerX="225" centerY="225" width="410" height="410" startAngle="-4" endAngle="4" align="CENTER">
           <Transform target="startAngle" value="30*360/[DAYS_IN_MONTH] - 4" />
           <Transform target="endAngle" value="30*360/[DAYS_IN_MONTH] + 4" />
@@ -951,10 +1008,12 @@
             <Stroke thickness="2" color="#333333" />
           </Ellipse>
         </PartDraw>
-        <PartImage x="25" y="4" width="40" height="40">
+        <PartImage x="25" y="4" width="40" height="40" tintColor="#FFFFFF">
+          <Variant mode="AMBIENT" target="tintColor" value="#707070" />
           <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
         </PartImage>
         <PartText x="2" y="40" width="86" height="38" tintColor="#EAEAEA">
+          <Variant mode="AMBIENT" target="tintColor" value="#707070" />
           <Text ellipsis="TRUE">
             <Font family="SYNC_TO_DEVICE" size="26.0" weight="BOLD">
               <Template><![CDATA[%s]]>
@@ -975,7 +1034,8 @@
             <Stroke thickness="2" color="#333333" />
           </Ellipse>
         </PartDraw>
-        <PartImage x="25" y="25" width="40" height="40">
+        <PartImage x="25" y="25" width="40" height="40" tintColor="#FFFFFF">
+          <Variant mode="AMBIENT" target="tintColor" value="#707070" />
           <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
         </PartImage>
       </Complication>
@@ -990,7 +1050,8 @@
             <Stroke thickness="2" color="#333333" />
           </Ellipse>
         </PartDraw>
-        <PartImage x="8" y="8" width="74" height="74">
+        <PartImage x="8" y="8" width="74" height="74" tintColor="#FFFFFF">
+          <Variant mode="AMBIENT" target="tintColor" value="#707070" />
           <Image resource="[COMPLICATION.SMALL_IMAGE]" />
         </PartImage>
       </Complication>
@@ -1021,10 +1082,12 @@
             <Stroke thickness="2" color="#333333" />
           </Ellipse>
         </PartDraw>
-        <PartImage x="25" y="4" width="40" height="40">
+        <PartImage x="25" y="4" width="40" height="40" tintColor="#FFFFFF">
+          <Variant mode="AMBIENT" target="tintColor" value="#707070" />
           <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
         </PartImage>
         <PartText x="2" y="40" width="86" height="38" tintColor="#EAEAEA">
+          <Variant mode="AMBIENT" target="tintColor" value="#707070" />
           <Text ellipsis="TRUE">
             <Font family="SYNC_TO_DEVICE" size="26.0" weight="BOLD">
               <Template><![CDATA[%s]]>
@@ -1045,7 +1108,8 @@
             <Stroke thickness="2" color="#333333" />
           </Ellipse>
         </PartDraw>
-        <PartImage x="25" y="25" width="40" height="40">
+        <PartImage x="25" y="25" width="40" height="40" tintColor="#FFFFFF">
+          <Variant mode="AMBIENT" target="tintColor" value="#707070" />
           <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
         </PartImage>
       </Complication>
@@ -1060,7 +1124,8 @@
             <Stroke thickness="2" color="#333333" />
           </Ellipse>
         </PartDraw>
-        <PartImage x="8" y="8" width="74" height="74">
+        <PartImage x="8" y="8" width="74" height="74" tintColor="#FFFFFF">
+          <Variant mode="AMBIENT" target="tintColor" value="#707070" />
           <Image resource="[COMPLICATION.SMALL_IMAGE]" />
         </PartImage>
       </Complication>
@@ -1086,12 +1151,14 @@
       </Text>
     </PartText>
 
-    <PartImage x="180" y="85" width="90" height="90" alpha="0">
+    <PartImage x="180" y="85" width="90" height="90" alpha="0" tintColor="#F5C56A" blendMode="SRC_ATOP">
       <Transform target="alpha" value="([HOUR_0_23] &gt;= 6 &amp;&amp; [HOUR_0_23] &lt; 18) ? 255 : 0" />
+      <Variant mode="AMBIENT" target="tintColor" value="#707070" />
       <Image resource="sun" />
     </PartImage>
-    <PartImage x="180" y="85" width="90" height="90" alpha="0">
+    <PartImage x="180" y="85" width="90" height="90" alpha="0" tintColor="#EAEAEA" blendMode="SRC_ATOP">
       <Transform target="alpha" value="([HOUR_0_23] &lt; 6 || [HOUR_0_23] &gt;= 18) ? 255 : 0" />
+      <Variant mode="AMBIENT" target="tintColor" value="#707070" />
       <Image resource="moon" />
     </PartImage>
 
