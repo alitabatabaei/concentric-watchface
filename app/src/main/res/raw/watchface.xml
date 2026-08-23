@@ -1153,15 +1153,38 @@
 
     <!-- Prefer the real, location-based day/night state from the weather provider; -->
     <!-- fall back to a fixed 6am-6pm window when weather data isn't available -->
-    <PartImage x="180" y="85" width="90" height="90" alpha="0" tintColor="#F5C56A" blendMode="SRC_ATOP">
+    <PartImage x="180" y="85" width="90" height="90" alpha="0">
       <Transform target="alpha" value="([WEATHER.IS_AVAILABLE] ? [WEATHER.IS_DAY] : ([HOUR_0_23] &gt;= 6 &amp;&amp; [HOUR_0_23] &lt; 18)) ? 255 : 0" />
-      <Variant mode="AMBIENT" target="tintColor" value="#707070" />
       <Image resource="sun" />
     </PartImage>
-    <PartImage x="180" y="85" width="90" height="90" alpha="0" tintColor="#EAEAEA" blendMode="SRC_ATOP">
-      <Transform target="alpha" value="([WEATHER.IS_AVAILABLE] ? [WEATHER.IS_DAY] : ([HOUR_0_23] &gt;= 6 &amp;&amp; [HOUR_0_23] &lt; 18)) ? 0 : 255" />
-      <Variant mode="AMBIENT" target="tintColor" value="#707070" />
-      <Image resource="moon" />
+    <!-- Moon phase (0=New Moon is skipped: nothing is drawn, matching a dark sky) -->
+    <PartImage x="180" y="85" width="90" height="90" alpha="0">
+      <Transform target="alpha" value="([WEATHER.IS_AVAILABLE] ? [WEATHER.IS_DAY] : ([HOUR_0_23] &gt;= 6 &amp;&amp; [HOUR_0_23] &lt; 18)) ? 0 : ([MOON_PHASE_TYPE] == 1 ? 255 : 0)" />
+      <Image resource="moon_crescent_waxing" />
+    </PartImage>
+    <PartImage x="180" y="85" width="90" height="90" alpha="0">
+      <Transform target="alpha" value="([WEATHER.IS_AVAILABLE] ? [WEATHER.IS_DAY] : ([HOUR_0_23] &gt;= 6 &amp;&amp; [HOUR_0_23] &lt; 18)) ? 0 : ([MOON_PHASE_TYPE] == 2 ? 255 : 0)" />
+      <Image resource="moon_quarter_first" />
+    </PartImage>
+    <PartImage x="180" y="85" width="90" height="90" alpha="0">
+      <Transform target="alpha" value="([WEATHER.IS_AVAILABLE] ? [WEATHER.IS_DAY] : ([HOUR_0_23] &gt;= 6 &amp;&amp; [HOUR_0_23] &lt; 18)) ? 0 : ([MOON_PHASE_TYPE] == 3 ? 255 : 0)" />
+      <Image resource="moon_gibbous_waxing" />
+    </PartImage>
+    <PartImage x="180" y="85" width="90" height="90" alpha="0">
+      <Transform target="alpha" value="([WEATHER.IS_AVAILABLE] ? [WEATHER.IS_DAY] : ([HOUR_0_23] &gt;= 6 &amp;&amp; [HOUR_0_23] &lt; 18)) ? 0 : ([MOON_PHASE_TYPE] == 4 ? 255 : 0)" />
+      <Image resource="moon_full" />
+    </PartImage>
+    <PartImage x="180" y="85" width="90" height="90" alpha="0">
+      <Transform target="alpha" value="([WEATHER.IS_AVAILABLE] ? [WEATHER.IS_DAY] : ([HOUR_0_23] &gt;= 6 &amp;&amp; [HOUR_0_23] &lt; 18)) ? 0 : ([MOON_PHASE_TYPE] == 5 ? 255 : 0)" />
+      <Image resource="moon_gibbous_waning" />
+    </PartImage>
+    <PartImage x="180" y="85" width="90" height="90" alpha="0">
+      <Transform target="alpha" value="([WEATHER.IS_AVAILABLE] ? [WEATHER.IS_DAY] : ([HOUR_0_23] &gt;= 6 &amp;&amp; [HOUR_0_23] &lt; 18)) ? 0 : ([MOON_PHASE_TYPE] == 6 ? 255 : 0)" />
+      <Image resource="moon_quarter_last" />
+    </PartImage>
+    <PartImage x="180" y="85" width="90" height="90" alpha="0">
+      <Transform target="alpha" value="([WEATHER.IS_AVAILABLE] ? [WEATHER.IS_DAY] : ([HOUR_0_23] &gt;= 6 &amp;&amp; [HOUR_0_23] &lt; 18)) ? 0 : ([MOON_PHASE_TYPE] == 7 ? 255 : 0)" />
+      <Image resource="moon_crescent_waning" />
     </PartImage>
 
     <AnalogClock x="0" y="0" width="450" height="450">
